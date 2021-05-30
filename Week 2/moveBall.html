@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Move Ball</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+  </head>
+	<body>
+	<div id="container" style="width:450px;height:450px; position: relative; background-color: 	rgb(255,218,185); "></div>
+		<div id="ball" style=" 
+		z-index:5;
+		position:absolute;
+		left:0px;
+		top:10px;
+		width:50px;
+		height:50px;
+		border-radius:50%;
+		background:green"></div>
+	</body>  
+</html>
+<script>
+
+var positionX = 0;
+var positionY = 0;
+var velocity = 25;
+var reverse = false;
+var ball = document.getElementById("ball");
+
+//write a function that can change the position of the html element "ball"
+function moveBall() {
+  // two x-axis coordinates
+  var Xmin = 0;
+  var Xmax = 300;
+
+  // two y-axis coordinates
+  var Ymin = 0;
+  var Ymax = 300;
+  
+  //Get a random RGB color
+  var rgbString = generateRandomRGB();
+
+  if (reverse) {
+    var randomX = generateRandomNumber();
+    positionX = randomX - velocity;
+    positionY = positionY - velocity;
+    ball.style.left = positionX + "px";
+    ball.style.top = positionY + "px";
+    ball.style.backgroundColor= 'rgb(' + rgbString + ')'
+    ball.style.width = "25px";
+    ball.style.height= "25px";
+	
+  } else {
+    positionX = positionX + velocity;
+    positionY = positionY + velocity;
+    ball.style.left = positionX + "px";
+    ball.style.top = positionY + "px";
+    ball.style.width = "75px";
+    ball.style.height= "75px";
+  }
+
+  if (
+    positionX > Xmax ||
+    positionX === Xmin ||
+    positionY > Ymax ||
+    positionY === Ymin
+  ) {
+    reverse = !reverse;
+  }
+
+}
+// Generate RGB colors
+function generateRandomRGB(){
+    
+  var r = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+  var g = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+  var b = Math.floor(Math.random() * (255 - 0 + 1) + 0);
+  return  r +","+g+","+b;
+}
+
+//Generate a random number between 0 and 300
+function generateRandomNumber(){
+  return Math.floor(Math.random() * (300 - 0 + 1) + 0); 
+}
+
+setInterval(moveBall, 100);
+</script>
