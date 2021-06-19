@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Boston Walk</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+  <script src="./boston.js"></script>
+  <style>
+    body {
+          font-family: "Trirong", serif;
+    }
+    .imgStyle{
+      border-radius: 30px;
+      display: block;
+      width: 70%;
+    }
+    <!--Code to display wrapper and columns-->
+    #wrapper {
+      content: "";
+      display: table;
+      clear: both;
+
+    }
+
+    div {
+     float: left;
+     height: 470px;
+     width: 23%;
+     padding: 0 10px;
+     margin-left: auto;
+     margin-right: auto;
+    }
+    #columnm2{
+      width: 43%;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; font-size: 3em;">Boston Walk</h1>
+  <main id="wrapper">
+    <div id="column1">
+      <img src="./boston.png" class="imgStyle"></img> 
+    </div>
+    <div id="column2">
+      <!-- populated by JS-->
+    </div>
+  </main>
+</body>
+</html>
+
+
+<script>
+  function renderBoston(boston, container) {
+  
+    var html = '';
+    var employee = boston.data;
+ 
+    html += '<tr><th>Name</th> <th>Salary</th></tr>'
+
+    employee.sort(function(a, b){return b[11]-a[11]}); //sorting the array in descendent
+    const newEmployee = employee.filter(element => element[11] < 100000).slice(0,5); //filtering out anyone that earns more than 100,000 and getting the top 5
+    
+    
+  //displaying the employees data
+    for (let i = 0; i < newEmployee.length; i++) {
+
+      let employeeName = newEmployee[i][8];
+      let salary = newEmployee[i][11];
+    
+      html += '<tr>' +
+        '<td>' + employeeName + '</td>' +
+        '<td>' + salary + '</td>'+
+        '</tr>';
+      
+    }
+    container.innerHTML = '<table id="topEmployee">' + html + '</table>';
+  }
+  renderBoston(boston, document.getElementById('column2'));
+</script>

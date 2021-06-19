@@ -39,6 +39,19 @@ ASSIGNMENTS PER WEEK
  
 	- *Pac-Man:* This code emulates the movement of Pac-Man side to side, and it will change directions once it had reached the edge of the screen. To start the movement, click on the Pac-Man image.
 	
+ * Week 5: During this week, we worked with Array Manipulation and Scope.
+ 
+	 ***Assignments:***
+ 
+	- *Walk Boston:* This code displays the name and salary of the top 5 people with the highest salary in Boston after iterating and sorting a JSON object with more than 20k records. 
+	
+ * Week 6: During this week, we worked with Callback Functions.
+ 
+	 ***Assignments:***
+ 
+	- *Word Count:* This code displays a pagraph  and a table with the 3 most common words in it sorted by number.
+	
+	
 
 MAINTAINERS
 ------------
